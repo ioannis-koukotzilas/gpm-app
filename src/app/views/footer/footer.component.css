@@ -1,0 +1,5 @@
+.site-footer .wrapper {
+  max-width: var(--max-w-xxl);
+  margin: 0 auto;
+  padding: 24px;
+}

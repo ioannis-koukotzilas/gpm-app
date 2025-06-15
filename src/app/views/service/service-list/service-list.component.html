@@ -1,0 +1,12 @@
+<app-spinner *ngIf="loading"></app-spinner>
+
+<div class="services" *ngIf="services && services.length > 0">
+  <div class="wrapper">
+    <ul>
+      <li *ngFor="let service of services">
+        <h2 class="title"><a [routerLink]="['/service', service.slug]">{{ service.title }}</a></h2>
+        <div class="content" *ngIf="service.content" [innerHTML]="service.content"></div>
+      </li>
+    </ul>
+  </div>
+</div>

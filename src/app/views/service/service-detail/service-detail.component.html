@@ -1,0 +1,26 @@
+<app-spinner *ngIf="loading"></app-spinner>
+
+<ng-container *ngIf="service">
+
+  <div class="spotlight" *ngIf="service.featuredImage">
+    <picture>
+      <img [attr.srcset]="service.featuredImage.srcSet" [alt]="service.featuredImage.altText || service.title" class="featured-image" />
+    </picture>
+
+    <div class="content">
+      <div class="wrapper">
+        <div class="inner">
+          <div class="title">{{ service.title }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <h1 class="title">{{ service.title }}</h1>
+  <div class="content" *ngIf="service.content" [innerHTML]="service.content"></div>
+
+  <img *ngIf="service.featuredImage" [attr.srcset]="service.featuredImage.srcSet"
+    [alt]="service.featuredImage.altText || service.title" class="featured-image" /> -->
+
+</ng-container>

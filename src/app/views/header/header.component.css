@@ -1,0 +1,28 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: #000;
+}
+
+.site-header .wrapper {
+  max-width: var(--max-w-xxl);
+  margin: 0 auto;
+  padding: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.site-header .site-title {
+  font-weight: var(--font-bold);
+  font-size: var(--font-2xl);
+}
+
+.site-header .main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
