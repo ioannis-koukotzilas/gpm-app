@@ -1,0 +1,25 @@
+<app-spinner *ngIf="loading else content"></app-spinner>
+
+<ng-template #content>
+  <div class="vehicles" *ngIf="vehicles && vehicles.length > 0">
+    <div class="wrapper">
+      <ul class="vehicles-list">
+        <li class="vehicle" *ngFor="let vehicle of vehicles">
+          <picture>
+            <img [attr.srcset]="vehicle.featuredImage?.srcSet" [alt]="vehicle.title" class="featured-image" />
+          </picture>
+
+          <div class="content">
+            <div class="wrapper">
+              <h3 class="title"><a [routerLink]="['/vehicle', vehicle.slug]">{{ vehicle.title }}</a></h3>
+              <div class="passenger-capacity" *ngIf="vehicle.passengerCapacity"><span class="symbol">group</span> <span
+                  class="text">{{ vehicle.passengerCapacity }} passengers</span></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <app-faq></app-faq>
+</ng-template>

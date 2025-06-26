@@ -1,10 +1,13 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FeaturedImage, Service } from '../../../model/service';
+import { Service } from '../../../model/service';
 import { GraphqlService } from '../../../services/graphql.service';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../../spinner/spinner.component';
+import { GetServiceBySlugQuery } from '../../../graphql/types/graphql';
+import { ApolloQueryResult } from '@apollo/client/core';
+import { FeaturedImage } from '../../../model/featuredImage';
 
 @Component({
   selector: 'app-service-detail',
@@ -13,15 +16,11 @@ import { SpinnerComponent } from '../../spinner/spinner.component';
   styleUrl: './service-detail.component.css',
 })
 export class ServiceDetailComponent implements OnInit {
-  service?: Service;
+  service: Service | null = null;
 
   loading = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private graphqlService: GraphqlService,
-    private cd: ChangeDetectorRef
-  ) {}
+  constructor(private route: ActivatedRoute, private graphqlService: GraphqlService, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.checkRouteParams();
@@ -46,8 +45,8 @@ export class ServiceDetailComponent implements OnInit {
       .getServiceBySlug(slug)
       .pipe(take(1))
       .subscribe({
-        next: (response: any) => {
-          this.initService(response.data);
+        next: (result: ApolloQueryResult<GetServiceBySlugQuery>) => {
+          this.initService(result.data);
           this.setLoading(false);
         },
         error: (error) => {
@@ -57,21 +56,17 @@ export class ServiceDetailComponent implements OnInit {
       });
   }
 
-  private initService(data: any): void {
+  private initService(data: GetServiceBySlugQuery): void {
     let featuredImage = null;
 
-    if (data.service.featuredImage) {
-      featuredImage = new FeaturedImage(
-        data.service.featuredImage.node.srcSet,
-        data.service.featuredImage.node.altText
-      );
+    if (!data.service) {
+      return;
     }
 
-    this.service = new Service(
-      data.service.slug,
-      data.service.title,
-      data.service.content,
-      featuredImage
-    );
+    if (data.service.featuredImage) {
+      featuredImage = new FeaturedImage(data.service.featuredImage.node.srcSet, data.service.featuredImage.node.altText);
+    }
+
+    this.service = new Service(data.service.slug, data.service.title, data.service.content, featuredImage);
   }
 }

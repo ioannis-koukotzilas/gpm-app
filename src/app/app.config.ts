@@ -13,7 +13,7 @@ import {
 
 import { provideApollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { InMemoryCache } from '@apollo/client/core';
 import { environment } from '../environments/environment';
 
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideApollo(() => {
       const httpLink = inject(HttpLink);
 

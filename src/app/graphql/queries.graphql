@@ -1,0 +1,47 @@
+query getServices {
+  services {
+    nodes {
+      slug
+      title
+      content
+      featuredImage {
+        node {
+          srcSet
+          altText
+        }
+      }
+    }
+  }
+}
+
+query getServiceBySlug($slug: ID!) {
+  service(id: $slug, idType: SLUG) {
+    slug
+    title
+    content
+    featuredImage {
+      node {
+        srcSet
+        altText
+      }
+    }
+  }
+}
+
+query getVehicles {
+  vehicles {
+    nodes {
+      slug
+      title
+      featuredImage {
+        node {
+          srcSet
+          altText
+        }
+      }
+      vehicleFields {
+        passengerCapacity
+      }
+    }
+  }
+}

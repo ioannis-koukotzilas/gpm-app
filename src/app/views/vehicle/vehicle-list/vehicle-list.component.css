@@ -1,0 +1,72 @@
+.vehicles > .wrapper {
+  max-width: var(--max-w-xxl);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.vehicles-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (min-width: 960px) {
+  .vehicles-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+.vehicle {
+  position: relative;
+  background-color: #333;
+  border-radius: 1rem;
+}
+
+.vehicle picture {
+  /* background-color: #333;
+border-radius: 1rem; */
+}
+
+.vehicle img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  /* aspect-ratio: 3 / 2; */
+}
+
+.vehicle .content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.vehicle .content > .wrapper {
+  padding: 1rem 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 24px;
+
+}
+
+.vehicle .content .title {
+  font-size: var(--font-xl);
+  font-weight: var(--font-black);
+}
+
+.vehicle .content .passenger-capacity {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vehicle .content .passenger-capacity .symbol {
+  font-size: var(--font-base);
+}
+
+.vehicle .content .passenger-capacity .text {
+  font-size: var(--font-sm);
+}

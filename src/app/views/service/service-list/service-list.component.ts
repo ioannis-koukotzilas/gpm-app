@@ -1,15 +1,13 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { GraphqlService } from '../../../services/graphql.service';
-import { take } from 'rxjs';
-import { FeaturedImage, Service } from '../../../model/service';
+import { map, take } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SpinnerComponent } from '../../spinner/spinner.component';
+import { ApolloQueryResult } from '@apollo/client/core';
+import { GetServicesQuery } from '../../../graphql/types/graphql';
+import { Service } from '../../../model/service';
+import { FeaturedImage } from '../../../model/featuredImage';
 
 @Component({
   selector: 'app-service-list',
@@ -23,10 +21,7 @@ export class ServiceListComponent implements OnInit {
 
   loading = false;
 
-  constructor(
-    private graphqlService: GraphqlService,
-    private cd: ChangeDetectorRef
-  ) {}
+  constructor(private graphqlService: GraphqlService, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.getServices();
@@ -44,8 +39,8 @@ export class ServiceListComponent implements OnInit {
       .getServices()
       .pipe(take(1))
       .subscribe({
-        next: (response: any) => {
-          this.initServices(response.data);
+        next: (result: ApolloQueryResult<GetServicesQuery>) => {
+          this.initServices(result.data);
           this.setLoading(false);
         },
         error: (error) => {
@@ -55,20 +50,21 @@ export class ServiceListComponent implements OnInit {
       });
   }
 
-  private initServices(data: any): void {
-    data.services.nodes.forEach((node: any) => {
-      let featuredImage = null;
+  private initServices(data: GetServicesQuery): void {
+    this.services = [];
 
-      if (node.featuredImage) {
-        featuredImage = new FeaturedImage(
-          node.featuredImage.node.srcSet,
-          node.featuredImage.node.altText
-        );
+    if (!data.services?.nodes) {
+      return;
+    }
+
+    data.services.nodes.forEach((service) => {
+      let serviceFeaturedImage = null;
+
+      if (service.featuredImage) {
+        serviceFeaturedImage = new FeaturedImage(service.featuredImage.node.srcSet, service.featuredImage.node.altText);
       }
 
-      this.services.push(
-        new Service(node.slug, node.title, node.content, featuredImage)
-      );
+      this.services.push(new Service(service.slug, service.title, service.content, serviceFeaturedImage));
     });
   }
 }

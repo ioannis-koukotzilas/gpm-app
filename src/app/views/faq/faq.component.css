@@ -1,0 +1,61 @@
+.faq > .wrapper {
+  max-width: var(--max-w-xxl);
+  margin: 4.5rem auto;
+  padding: 24px;
+}
+
+.header > .wrapper {
+  margin-bottom: 4.5rem;
+}
+
+@media (min-width: 960px) {
+  .header > .wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.header .title {
+  font-size: var(--font-4xl);
+  font-weight: var(--font-black);
+}
+
+.detail-list {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .detail-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.detail-list details {
+  margin-bottom: 1.5rem;
+}
+
+details summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: start;
+  gap: 1.5rem;
+  font-size: var(--font-xl);
+  font-weight: var(--font-black);
+  border-bottom: 1px solid #333;
+  padding-bottom: 1rem;
+}
+
+details summary .symbol::after {
+  content: '\e313';
+}
+
+details[open] summary .symbol::after {
+  content: '\e316';
+}
+
+details .content {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

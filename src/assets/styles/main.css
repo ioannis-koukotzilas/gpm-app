@@ -130,6 +130,15 @@ button {
   border-radius: none;
 }
 
+/* Symbols
+--------------------------------------------- */
+
+.symbol {
+  font-family: var(--font-symbol);
+  font-size: var(--font-2xl);
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
 /*--------------------------------------------------------------
 # Utilities
 --------------------------------------------------------------*/
@@ -172,6 +181,6 @@ button {
 }
 
 /* Do not show the outline on the skip link target. */
-#primary[tabindex="-1"]:focus {
+#primary[tabindex='-1']:focus {
   outline: 0;
 }

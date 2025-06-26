@@ -1,0 +1,7 @@
+schema: 'http://localhost/greecepreciousmoments/graphql'
+documents: 'src/app/graphql/queries.graphql'
+generates:
+  src/app/graphql/types/:
+    preset: client
+    config:
+      avoidOptionals: true

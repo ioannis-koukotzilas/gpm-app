@@ -1,7 +1,6 @@
 :root {
-  --font-sans: "Inter", sans-serif;
-  --font-symbol-outlined: "Material Symbols Outlined";
-  --font-symbol-rounded: "Material Symbols Rounded";
+  --font-sans: 'Inter', sans-serif;
+  --font-symbol: 'Material Symbols Outlined';
 
   --font-xs: 0.75rem;
   --font-sm: 0.875rem;
@@ -20,6 +19,7 @@
   --font-medium: 500;
   --font-semibold: 600;
   --font-bold: 700;
+  --font-extrabold: 800;
   --font-black: 900;
 
   --font-normal: normal;
