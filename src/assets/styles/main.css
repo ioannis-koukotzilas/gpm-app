@@ -8,12 +8,12 @@ body {
 
 app-root {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-main {
+  flex-grow: 1;
   position: relative;
 }
 
@@ -51,11 +51,12 @@ textarea {
   font-style: normal;
   font-size: var(--font-base);
   line-height: var(--leading-base);
-  color: #fff;
+  color: var(--color-light);
+  letter-spacing: 0.05em;
 }
 
 body {
-  background-color: #000;
+  background-color: var(--color-dark);
 }
 
 h1,
@@ -71,11 +72,11 @@ h6 {
 }
 
 p {
-  margin: 0 0 1.5rem;
+  margin: 0;
 }
 
 strong {
-  font-weight: var(--font-black);
+  font-weight: var(--font-bold);
 }
 
 /* Elements
@@ -104,8 +105,9 @@ picture {
 /* Links
 --------------------------------------------- */
 a {
+  display: inline-block;
   cursor: pointer;
-  color: #fff;
+  color: var(--color-light);
   text-decoration: none;
 }
 
@@ -123,11 +125,14 @@ button {
 }
 
 .btn {
-  background-color: #252525;
-  color: #fffef2;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid #252525;
-  border-radius: none;
+  background-color: none;
+  color: var(--color-primary);
+  padding: 0.65rem 1.5rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 10rem;
+  font-weight: var(--font-light);
+  font-size: var(--font-xs);
+  text-transform: uppercase;
 }
 
 /* Symbols
@@ -140,47 +145,5 @@ button {
 }
 
 /*--------------------------------------------------------------
-# Utilities
+# Components
 --------------------------------------------------------------*/
-
-/* Accessibility
---------------------------------------------- */
-
-/* Text meant only for screen readers. */
-.screen-reader-text {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute !important;
-  width: 1px;
-  word-wrap: normal !important;
-}
-
-.screen-reader-text:focus {
-  background-color: #f1f1f1;
-  border-radius: 3px;
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-  clip: auto !important;
-  clip-path: none;
-  color: #21759b;
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 700;
-  height: auto;
-  left: 5px;
-  line-height: normal;
-  padding: 15px 23px 14px;
-  text-decoration: none;
-  top: 5px;
-  width: auto;
-  z-index: 100000;
-}
-
-/* Do not show the outline on the skip link target. */
-#primary[tabindex='-1']:focus {
-  outline: 0;
-}

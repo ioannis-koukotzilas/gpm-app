@@ -61,10 +61,10 @@ export class ServiceListComponent implements OnInit {
       let serviceFeaturedImage = null;
 
       if (service.featuredImage) {
-        serviceFeaturedImage = new FeaturedImage(service.featuredImage.node.srcSet, service.featuredImage.node.altText);
+        serviceFeaturedImage = new FeaturedImage(service.featuredImage.node.srcSet);
       }
 
-      this.services.push(new Service(service.slug, service.title, service.content, serviceFeaturedImage));
+      this.services.push(new Service(service.databaseId, service.slug, service.title, service.excerpt, service.content, serviceFeaturedImage));
     });
   }
 }

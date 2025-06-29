@@ -1,59 +1,76 @@
-.vehicles > .wrapper {
-  max-width: var(--max-w-xxl);
-  margin: 0 auto;
-  padding: 24px;
+:host > .wrapper {
+  max-width: var(--max-w-xl);
+  margin: 4.5rem auto;
+  padding: 0 24px;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.header .title {
+  font-size: var(--font-4xl);
+  line-height: var(--leading-snug);
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
 }
 
 .vehicles-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
 }
 
 @media (min-width: 960px) {
   .vehicles-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
   }
 }
 
 .vehicle {
   position: relative;
-  background-color: #333;
-  border-radius: 1rem;
+  background-color: #383838;
+  border-radius: 0.5rem;
 }
 
 .vehicle picture {
-  /* background-color: #333;
-border-radius: 1rem; */
+  position: relative;
+  z-index: 1;
 }
 
 .vehicle img {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  /* aspect-ratio: 3 / 2; */
+  aspect-ratio: 16 / 9;
+  padding-bottom: 24px;
 }
 
 .vehicle .content {
   position: absolute;
+  top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.25) 100%);
+  display: flex;
+  align-items: end;
 }
 
 .vehicle .content > .wrapper {
-  padding: 1rem 24px;
+  width: 100%;
+  padding: 24px;
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   align-items: end;
-  gap: 24px;
-
+  gap: 1.5rem;
+  background-color: #383838;
 }
 
 .vehicle .content .title {
   font-size: var(--font-xl);
-  font-weight: var(--font-black);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-snug);
 }
 
 .vehicle .content .passenger-capacity {
@@ -69,4 +86,11 @@ border-radius: 1rem; */
 
 .vehicle .content .passenger-capacity .text {
   font-size: var(--font-sm);
+}
+
+app-contact-cta {
+  display: block;
+  max-width: var(--max-w-xl);
+  margin: 0 auto;
+  border-top: 1px solid #383838;
 }

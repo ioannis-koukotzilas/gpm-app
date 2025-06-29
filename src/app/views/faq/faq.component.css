@@ -1,22 +1,18 @@
 .faq > .wrapper {
-  max-width: var(--max-w-xxl);
+  max-width: var(--max-w-xl);
   margin: 4.5rem auto;
   padding: 24px;
 }
 
-.header > .wrapper {
-  margin-bottom: 4.5rem;
-}
-
-@media (min-width: 960px) {
-  .header > .wrapper {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.header {
+  margin-bottom: 3rem;
 }
 
 .header .title {
-  font-size: var(--font-4xl);
-  font-weight: var(--font-black);
+  font-size: var(--font-2xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-snug);
+  color: var(--color-primary);
 }
 
 .detail-list {
@@ -33,18 +29,31 @@
 
 .detail-list details {
   margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #383838;
 }
 
 details summary {
   list-style: none;
   cursor: pointer;
   display: flex;
-  align-items: start;
+  justify-content: space-between;
+  align-items: center;
   gap: 1.5rem;
-  font-size: var(--font-xl);
-  font-weight: var(--font-black);
-  border-bottom: 1px solid #333;
-  padding-bottom: 1rem;
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+}
+
+details summary .symbol::after {
+  font-size: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: rgba(200, 162, 87, 0.1);
+  color: var(--color-primary);
 }
 
 details summary .symbol::after {
@@ -56,6 +65,5 @@ details[open] summary .symbol::after {
 }
 
 details .content {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
 }

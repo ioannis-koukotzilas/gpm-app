@@ -1,0 +1,50 @@
+.contact-cta > .wrapper {
+  max-width: var(--max-w-xl);
+  margin: 4.5rem auto;
+  padding: 0 24px;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.header .title {
+  font-size: var(--font-2xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-snug);
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.contact-details {
+  margin-bottom: 1.5rem;
+  font-weight: var(--font-bold);
+}
+
+.contact-details a {
+  color: var(--color-primary);
+}
+
+.contact-details ul {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-details li a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-details .symbol {
+  font-size: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: rgba(200, 162, 87, 0.1);
+  color: var(--color-primary);
+}

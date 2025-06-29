@@ -1,26 +1,44 @@
 <app-spinner *ngIf="loading"></app-spinner>
 
-<ng-container *ngIf="service">
-
+<ng-container *ngIf="service && !loading">
   <div class="spotlight" *ngIf="service.featuredImage">
-    <picture>
-      <img [attr.srcset]="service.featuredImage.srcSet" [alt]="service.featuredImage.altText || service.title" class="featured-image" />
+    <picture class="featured-image">
+      <img [attr.srcset]="service.featuredImage.srcSet" [alt]="service.title" />
     </picture>
 
     <div class="content">
       <div class="wrapper">
         <div class="inner">
-          <div class="title">{{ service.title }}</div>
+          <h1 class="title">{{ service.title }}</h1>
+
+          <div class="symbols">
+            <div class="col" *ngIf="service.excerpt"><span class="symbol">directions_car</span> <span class="text"
+                [innerHTML]="service.excerpt"></span></div>
+            <div class="col"><span class="symbol">acute</span> <span class="text">Transfers every day, all hours</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="summary">
+    <div class="wrapper">
+      <div class="title">{{ service.summaryTitle }}</div>
 
-  <!-- <h1 class="title">{{ service.title }}</h1>
-  <div class="content" *ngIf="service.content" [innerHTML]="service.content"></div>
+      <div class="description" *ngIf="service.content" [innerHTML]="service.content"></div>
 
-  <img *ngIf="service.featuredImage" [attr.srcset]="service.featuredImage.srcSet"
-    [alt]="service.featuredImage.altText || service.title" class="featured-image" /> -->
+      <div class="cta">
+        <a class="btn" [routerLink]="['/vehicles']" routerLinkActive="active">Choose a vehicle</a>
+      </div>
+    </div>
+  </div>
 
+  <app-contact-cta></app-contact-cta>
+
+  <ng-container *ngIf="featuredServices && featuredServices.length > 0">
+    <app-service-featured [services]="featuredServices"></app-service-featured>
+  </ng-container>
+
+  <app-faq></app-faq>
 </ng-container>

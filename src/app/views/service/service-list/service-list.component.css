@@ -1,5 +1,110 @@
-.services .wrapper {
-  max-width: var(--max-w-xxl);
+:host > .wrapper {
+  max-width: var(--max-w-xl);
+  margin: 4.5rem auto;
+  padding: 0 24px;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.header .title {
+  font-size: var(--font-4xl);
+  line-height: var(--leading-snug);
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .services-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+  }
+
+  .service:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .service:nth-child(4) {
+    grid-column: 2 / 3;
+    grid-row: 3 / 5;
+  }
+
+  .service:nth-child(7) {
+    grid-column: 1 / 2;
+    grid-row: 5 / 7;
+  }
+}
+
+.service {
+  position: relative;
+}
+
+.service a,
+.service picture {
+  height: 100%;
+}
+
+.service .featured-image img {
+  border-radius: 0.5rem;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.service .content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.25) 100%);
+  display: flex;
+  align-items: end;
+}
+
+.service .content > .wrapper {
+  flex-grow: 1;
   margin: 0 auto;
   padding: 24px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 100px);
+  align-items: end;
+  gap: 1.5rem;
+}
+
+.service .content > .wrapper .col:nth-child(2) {
+  justify-self: end;
+}
+
+.service .content > .wrapper .col:nth-child(2) .symbol {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid;
+  border-radius: 100%;
+  color: var(--color-primary);
+}
+
+.service .content .title {
+  font-size: var(--font-xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-snug);
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.service .content .excerpt {
+  font-size: var(--font-sm);
 }

@@ -1,1 +1,41 @@
-<p>page-home works!</p>
+<app-spinner *ngIf="loading"></app-spinner>
+
+<ng-container *ngIf="!loading">
+  <div class="spotlight">
+    <video src="assets/videos/test.mp4" autoplay muted loop playsinline preload="auto"></video>
+
+    <div class="content">
+      <div class="wrapper">
+        <div class="inner">
+          <h1 class="title">Private Transportation Services in Athens</h1>
+          <div class="description">Discover the ultimate in private transportation with tailored luxury services</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="wrapper">
+      <div class="title">Welcome to Greece Precious Moments</div>
+      <div class="description">Enjoy
+        exclusive private tours, discreet executive transfers, airport and port pickups, wedding car services, event
+        transportation, and chauffeur-driven taxis—all designed for your comfort, privacy, and peace of mind. Book your
+        premium private ride today.
+      </div>
+
+      <div class="cta">
+        <a class="btn" [routerLink]="['vehicles']" routerLinkActive="active">Choose a vehicle</a>
+      </div>
+    </div>
+  </div>
+
+  <app-contact-cta></app-contact-cta>
+
+  <ng-container *ngIf="featuredServices && featuredServices.length > 0">
+    <app-service-featured [services]="featuredServices"></app-service-featured>
+  </ng-container>
+
+  
+
+  <app-faq></app-faq>
+</ng-container>

@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <!-- <div class="header">
+    <div class="title">Explore our Services</div>
+  </div> -->
+
+  <div #swiperRef class="swiper">
+    <ul class="swiper-wrapper services-list" *ngIf="services && services.length > 0">
+      <li class="swiper-slide service" *ngFor="let service of services">
+        <a [routerLink]="['/service', service.slug]">
+          <picture class="featured-image" *ngIf="service.featuredImage?.srcSet">
+            <img [attr.srcset]="service.featuredImage?.srcSet" [alt]="service.title" />
+          </picture>
+
+          <div class="content">
+            <div class="wrapper">
+              <h2 class="title">{{ service.title }}</h2>
+              <div class="excerpt" *ngIf="service.excerpt" [innerHTML]="service.excerpt"></div>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <div class="swiper-button-prev"><span class="symbol">arrow_back_ios_new</span></div>
+    <div class="swiper-button-next"><span class="symbol">arrow_forward_ios</span></div>
+  </div>
+</div>

@@ -3,6 +3,9 @@ import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { ApolloQueryResult } from '@apollo/client/core';
 import {
+  GetFeaturedServicesDocument,
+  GetFeaturedServicesQuery,
+  GetFeaturedServicesQueryVariables,
   GetServiceBySlugDocument,
   GetServiceBySlugQuery,
   GetServiceBySlugQueryVariables,
@@ -31,6 +34,14 @@ export class GraphqlService {
     return this.apollo.query<GetServiceBySlugQuery, GetServiceBySlugQueryVariables>({
       query: GetServiceBySlugDocument,
       variables: { slug },
+      fetchPolicy: 'no-cache',
+    });
+  }
+
+  getFeaturedServices(notIn: number[]): Observable<ApolloQueryResult<GetFeaturedServicesQuery>> {
+    return this.apollo.query<GetFeaturedServicesQuery, GetFeaturedServicesQueryVariables>({
+      query: GetFeaturedServicesDocument,
+      variables: { notIn: notIn.map(String) },
       fetchPolicy: 'no-cache',
     });
   }

@@ -1,12 +1,36 @@
-<app-spinner *ngIf="loading"></app-spinner>
+<app-spinner *ngIf="loading else content"></app-spinner>
 
-<div class="services" *ngIf="services && services.length > 0">
+<ng-template #content>
   <div class="wrapper">
-    <ul>
-      <li *ngFor="let service of services">
-        <h2 class="title"><a [routerLink]="['/service', service.slug]">{{ service.title }}</a></h2>
-        <div class="content" *ngIf="service.content" [innerHTML]="service.content"></div>
+    <div class="header">
+      <h1 class="title">Services</h1>
+      <div class="description">Greece Precious Moments offers a comprehensive range of luxury transportation services in
+        Athens, including private tours, business executive transfers for conferences and events, cruise ship transfers,
+        airport and port transfers, event and conference transportation, wedding transfers, as well as reliable taxi and
+        chauffeur services.</div>
+    </div>
+
+    <ul class="services-list" *ngIf="services && services.length > 0">
+      <li class="service" *ngFor="let service of services">
+        <a [routerLink]="['/service', service.slug]">
+          <picture class="featured-image" *ngIf="service.featuredImage?.srcSet">
+            <img [attr.srcset]="service.featuredImage?.srcSet" [alt]="service.title" />
+          </picture>
+
+          <div class="content">
+            <div class="wrapper">
+              <div class="col">
+                <h2 class="title">{{ service.title }}</h2>
+                <div class="excerpt" *ngIf="service.excerpt" [innerHTML]="service.excerpt"></div>
+              </div>
+
+              <div class="col">
+                <span class="symbol">arrow_outward</span>
+              </div>
+            </div>
+          </div>
+        </a>
       </li>
     </ul>
   </div>
-</div>
+</ng-template>

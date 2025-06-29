@@ -6,13 +6,12 @@ import { ApolloQueryResult } from '@apollo/client/core';
 import { GetVehiclesQuery } from '../../../graphql/types/graphql';
 import { FeaturedImage } from '../../../model/featuredImage';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { SpinnerComponent } from '../../spinner/spinner.component';
-import { FaqComponent } from '../../faq/faq.component';
+import { ContactCtaComponent } from '../../contact/contact-cta/contact-cta.component';
 
 @Component({
   selector: 'app-vehicle-list',
-  imports: [CommonModule, RouterLink, SpinnerComponent, FaqComponent],
+  imports: [CommonModule, SpinnerComponent, ContactCtaComponent],
   templateUrl: './vehicle-list.component.html',
   styleUrl: './vehicle-list.component.css',
 })
@@ -61,7 +60,7 @@ export class VehicleListComponent {
       let featuredImage = null;
 
       if (vehicle.featuredImage) {
-        featuredImage = new FeaturedImage(vehicle.featuredImage.node.srcSet, vehicle.featuredImage.node.altText);
+        featuredImage = new FeaturedImage(vehicle.featuredImage.node.srcSet);
       }
 
       this.vehicles.push(new Vehicle(vehicle.slug, vehicle.title, featuredImage, vehicle.vehicleFields?.passengerCapacity));

@@ -1,5 +1,45 @@
-<div class="site-footer">
-  <div class="wrapper">
-    CC. 2025
+<div class="wrapper">
+  <div class="navigation">
+    <div class="col">
+      <a class="site-title" [routerLink]="['/']">GPM</a>
+      <div class="site-tagline">Greece Precious Moments <br> Private Transportation Services</div>
+    </div>
+
+    <div class="col">
+      <div class="title">Navigation</div>
+      <nav class="main-nav">
+        <ul>
+          <li><a [routerLink]="['/services']" routerLinkActive="active">Services</a></li>
+          <li><a [routerLink]="['/vehicles']" routerLinkActive="active">Fleet</a></li>
+          <li><a [routerLink]="['/about']" routerLinkActive="active">About</a></li>
+          <li><a [routerLink]="['/contact']" routerLinkActive="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="col">
+      <div class="title">Resources</div>
+      <nav class="resources-nav">
+        <ul>
+          <li><a [routerLink]="['/privacy-policy']" routerLinkActive="active">Privacy Policy</a></li>
+          <li><a [routerLink]="['/terms-and-conditions']" routerLinkActive="active">Terms & Conditions</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="col">
+      <div class="title">Stay connected</div>
+      <nav class="social-networks-nav">
+        <ul>
+          <li><a [routerLink]="['/']" routerLinkActive="active">Facebook</a></li>
+          <li><a [routerLink]="['/']" routerLinkActive="active">Instagram</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="cc">
+    © {{ currentYear }} Greece Precious Moments. By using this site you accept our terms of use, including our use of
+    cookies. Design & development: MONOSCOPIC.
   </div>
 </div>

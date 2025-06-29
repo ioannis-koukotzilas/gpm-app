@@ -1,13 +1,14 @@
 query getServices {
   services {
     nodes {
+      databaseId
       slug
       title
+      excerpt
       content
       featuredImage {
         node {
           srcSet
-          altText
         }
       }
     }
@@ -16,13 +17,34 @@ query getServices {
 
 query getServiceBySlug($slug: ID!) {
   service(id: $slug, idType: SLUG) {
+    databaseId
     slug
     title
+    excerpt
     content
     featuredImage {
       node {
         srcSet
-        altText
+      }
+    }
+    serviceFields {
+      summaryTitle
+    }
+  }
+}
+
+query getFeaturedServices($notIn: [ID!]) {
+  services(where: { notIn: $notIn }) {
+    nodes {
+      databaseId
+      slug
+      title
+      excerpt
+      content
+      featuredImage {
+        node {
+          srcSet
+        }
       }
     }
   }
@@ -31,12 +53,12 @@ query getServiceBySlug($slug: ID!) {
 query getVehicles {
   vehicles {
     nodes {
+      databaseId
       slug
       title
       featuredImage {
         node {
           srcSet
-          altText
         }
       }
       vehicleFields {

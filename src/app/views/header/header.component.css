@@ -1,28 +1,55 @@
-.site-header {
+:host {
   position: sticky;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 3;
-  background-color: #000;
+  border-bottom: 1px solid var(--color-primary);
+
+  transition: background-color 0.4s;
 }
 
-.site-header .wrapper {
-  max-width: var(--max-w-xxl);
-  margin: 0 auto;
-  padding: 24px;
+body.fixed-header :host {
+  position: fixed;
+}
 
+body.fixed-header.window-scrolled :host {
+  background-color: var(--color-dark);
+}
+
+body:not(.transparent-header) :host {
+  background-color: var(--color-dark);
+}
+
+:host > .wrapper {
+  max-width: var(--max-w-xl);
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
+  height: var(--header-height);
 }
 
-.site-header .site-title {
-  font-weight: var(--font-bold);
-  font-size: var(--font-2xl);
+.site-title {
+  font-family: var(--font-serif);
+  font-size: var(--font-5xl);
+  line-height: var(--leading-tight);
+  background: linear-gradient(-135deg, #d7bb83 0%, #c8a257 50%, #ac8538 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-.site-header .main-nav ul {
+.main-nav ul {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+}
+
+.main-nav a {
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
 }

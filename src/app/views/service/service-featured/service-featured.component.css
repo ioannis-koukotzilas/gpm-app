@@ -1,0 +1,57 @@
+:host > .wrapper {
+  max-width: var(--max-w-xl);
+  margin: 4.5rem auto;
+  /* padding: 0 24px; */
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.header .title {
+  font-size: var(--font-2xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-snug);
+  color: var(--color-primary);
+}
+
+.service {
+  position: relative;
+}
+
+.service .featured-image img {
+  border-radius: 0.5rem;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.service .content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.25) 100%);
+  display: flex;
+  align-items: end;
+}
+
+.service .content > .wrapper {
+  flex-grow: 1;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.service .content .title {
+  font-size: var(--font-2xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  margin-bottom: 0.25rem;
+  color: var(--color-primary);
+}
+
+.service .content .excerpt {
+  font-size: var(--font-sm);
+}
